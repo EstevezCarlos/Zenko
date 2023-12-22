@@ -1,5 +1,20 @@
-mixin tables.tr()
-    tr
-        th
-mixin tr_cl()
-mixin tr_rh()
+mixin _()
+    -_=attributes
+
+
+mixin trh(...vals)
+    -_ = ''
+    block
+
+    tr&attributes(attributes)
+        for v in vals
+            th&attributes(_)=v
+
+
+
+mixin tr(...vals)
+    tr&attributes(attributes)
+        -_ = ''
+        block
+        for v in vals
+            td&attributes(_)=v
