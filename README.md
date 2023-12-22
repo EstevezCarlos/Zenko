@@ -21,7 +21,7 @@ include zenko
 
 
 
-#### `+hg` creates `<hX>`:
+#### `+hg` creates `<h#>`:
 ```pug
 +hg('qwe')
 ```
@@ -31,7 +31,7 @@ include zenko
 
 
 
-#### `+hg` is virtual wrapper for elements logically connected to `<hX>`:
+#### `+hg` is virtual wrapper for elements logically connected to `<h#>`:
 ```pug
 +hg('qwe')
     p asd
@@ -45,7 +45,7 @@ include zenko
 
 
 
-#### Level of `<hX>` depends on number of parent `+hg`:
+#### Level of `<h#>` depends on number of parent `+hg`:
 ```pug
 +hg('qwe')
     +hg('zxc')
@@ -65,16 +65,16 @@ include zenko
 
 
 
-#### Maximum Level of `<hX>` is 6:
+#### Maximum Level of `<h#>` is 6:
 ```pug
-    +hg('qwe')
-        +hg('zxc')
-            +hg('rty')
-                +hg('fgh')
-                    +hg('vbn')
-                        +hg('fgh')
-                            +hg('uio')
-                        +hg('jkl')
++hg('qwe')
+    +hg('zxc')
+        +hg('rty')
+            +hg('fgh')
+                +hg('vbn')
+                    +hg('fgh')
+                        +hg('uio')
+                    +hg('jkl')
 ```
 ```html
   <h1>qwe</h1>
