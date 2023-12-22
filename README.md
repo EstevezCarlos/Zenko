@@ -2,8 +2,9 @@
 
 Pugjs framework to simplify things that SHOULD be simple.
 
+---
 ## Tables
-
+---
 
 ---
 ### TABLE ROW -> `+tr`
@@ -22,7 +23,7 @@ Pugjs framework to simplify things that SHOULD be simple.
 
 
 #### `+tr` supports Pug attributes:
-```pugj
+```pug
 +tr('qwe')#asd.zxc
 ```
 ```html
@@ -30,7 +31,56 @@ Pugjs framework to simplify things that SHOULD be simple.
     <td>qwe</td>
 </tr>
 ```
+
+
+#### `+tr` supports child attributes
+```pug
++tr('qwe')
+    +_()#asd.zxc
+```
+```html
+<tr>
+    <td class="zxc" id="asd">qwe</td>
+</tr>
+```
+#### Tag `th` can be inserted in block of `tr`:
+```pug
++tr('asd')
+    th.zxc qwe
+```
+```html
+<tr>
+    <th class="zxc">qwe</th>
+    <td>asd</td>
+</tr>
+```
+#### Keep in mind, `th` does not share child attributes:
+```pug
++tr('asd')
+    +_.zxc
+    th.rty qwe
+```
+```html
+<tr>
+    <th class="rty">qwe</th>
+    <td class="zxc">asd</td>
+</tr>
+```
 ---
+---
+### TABLE ROW WITH HEADERS -> `+trh`
+---
+#### `+trh` is identical to `+tr`, except each child cell is `<th>`:
+```pug
++trh('qwe')#asd.zxc
+```
+```html
+<tr>
+    <th>qwe</th>
+    <th>asd</th>
+</tr>
+```
+
 
 <!-- ### +tr
 
