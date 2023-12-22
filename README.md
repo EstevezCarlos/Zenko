@@ -4,23 +4,34 @@ Pugjs framework to simplify things that SHOULD be simple.
 
 ## Tables
 
+
 ### +tr
 Makes `tr` with multiple `td`
----
-Creates `td` for each argument
 
-**code**
+
+#### `+tr` creates `td` for each argument
 ```pug
 +tr('qwe','asd')
 ```
-**yields**
 ```html
 <tr>
     <td>qwe</td>
     <td>asd</td>
 </tr>
 ```
-### +tr
+
+
+#### `+tr` supports Pug `attributes`
+```pugj
++tr('qwe')#asd.zxc
+```
+```html
+<tr class="zxc" id="asd">
+    <td>qwe</td>
+</tr>
+```
+
+<!-- ### +tr
 
 Makes `tr` with multiple `td`
 
@@ -151,5 +162,5 @@ Makes `tr` with multiple `td`
 
 </table>
 
-<!-- ## +trh -->
-
+## +trh
+-->
