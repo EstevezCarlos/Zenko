@@ -10,7 +10,7 @@ Pugjs framework to simplify things that SHOULD be simple.
 ### TABLE ROW -> `+tr`
 
 
-#### `+tr` creates `<td>` for each argument inside single `<tr>`:
+#### `+tr` creates `<td>` for each argument, inside single `<tr>`:
 ```pug
 +tr('qwe','asd')
 ```
@@ -72,12 +72,13 @@ Pugjs framework to simplify things that SHOULD be simple.
 ---
 #### `+trh` is identical to `+tr`, except each child cell is `<th>`:
 ```pug
-+trh('qwe')#asd.zxc
++trh('qwe','asd').zxc
+    +_.rty
 ```
 ```html
-<tr>
-    <th>qwe</th>
-    <th>asd</th>
+<tr class="zxc">
+    <th class="rty">qwe</th>
+    <th class="rty">asd</th>
 </tr>
 ```
 
