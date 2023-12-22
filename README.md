@@ -3,6 +3,104 @@
 Pugjs framework to simplify things that SHOULD be simple.
 
 ---
+## Installation
+---
+
+Copy `zenko.pug` file to your project directory and include it to your pug file:
+```pug
+include zenko
+```
+
+---
+## Headers
+---
+
+---
+### HEADER GROUP -> `+hg`
+
+
+
+
+#### `+hg` creates `<hX>`:
+```pug
++hg('qwe')
+```
+```html
+<h1>qwe</h1>
+```
+
+
+
+#### `+hg` is virtual wrapper for elements logically connected to `<hX>`:
+```pug
++hg('qwe')
+    p asd
+    p zxc
+```
+```html
+<h1>qwe</h1>
+<p>asd</p>
+<p>zxc</p>
+```
+
+
+
+#### Level of `<hX>` depends on number of parent `+hg`:
+```pug
++hg('qwe')
+    +hg('zxc')
+        +hg('rty')
++hg('fgh')
+    +hg('vbn')
+        +hg('fgh')
+```
+```html
+<h1>qwe</h1>
+<h2>zxc</h2>
+<h3>rty</h3>
+<h1>fgh</h1>
+<h2>vbn</h2>
+<h3>fgh</h3>
+```
+
+
+
+#### Maximum Level of `<hX>` is 6:
+```pug
+    +hg('qwe')
+        +hg('zxc')
+            +hg('rty')
+                +hg('fgh')
+                    +hg('vbn')
+                        +hg('fgh')
+                            +hg('uio')
+                        +hg('jkl')
+```
+```html
+  <h1>qwe</h1>
+  <h2>zxc</h2>
+  <h3>rty</h3>
+  <h4>fgh</h4>
+  <h5>vbn</h5>
+  <h6>fgh</h6>
+  <h6>uio</h6>
+  <h6>jkl</h6>
+```
+
+
+
+#### `+hg` supports Pug attributes:
+```pug
++hg('qwe')#asd.zxc
+```
+```html
+<h1 class="zxc" id="asd">qwe</h1>
+```
+
+
+
+
+---
 ## Tables
 ---
 
@@ -81,138 +179,3 @@ Pugjs framework to simplify things that SHOULD be simple.
     <th class="rty">asd</th>
 </tr>
 ```
-
-
-<!-- ### +tr
-
-Makes `tr` with multiple `td`
-
-<table>
-<tr>
-<th></th>
-<th>Code</th>
-<th>Yields</th>
-</tr>
-<tr>
-<td>Creates <code>td</code> for each argument</td>
-<td>
-
-```
-+tr('qwe','asd')
-```
-
-</td>
-<td>
-
-```html
-<tr>
-    <td>qwe</td>
-    <td>asd</td>
-</tr>
-```
-
-</td>
-</tr>
-<tr>
-
-<td>Supports attributes</td>
-<td>
-
-```pugjs
-+tr('qwe')#asd.zxc
-```
-
-</td>
-<td>
-
-```html
-<tr class="zxc" id="asd">
-    <td>qwe</td>
-</tr>
-```
-
-</td>
-
-
-</tr>
-</tr>
-<tr>
-
-<td>Supports child attributes</td>
-<td>
-
-```pugjs
-+tr('qwe')
-    +_()#asd.zxc
-```
-
-</td>
-<td>
-
-```html
-<tr>
-    <td class="zxc" id="asd">qwe</td>
-</tr>
-```
-
-</td>
-
-
-</tr>
-
-
-<td>Tag <code>th</code> can be inserted in block</td>
-<td>
-
-```pugjs
-+tr('asd')
-    th.zxc qwe
-```
-
-</td>
-<td>
-
-```html
-<tr>
-    <th class="zxc">qwe</th>
-    <td>asd</td>
-</tr>
-```
-
-</td>
-
-
-</tr>
-
-
-<td>Keep in mind that <code>th</code> does not share child attributes</td>
-<td>
-
-```pugjs
-+tr('asd')
-    +_.zxc
-    th.rty qwe
-```
-
-</td>
-<td>
-
-```html
-<tr>
-    <th class="rty">qwe</th>
-    <td class="zxc">asd</td>
-</tr>
-```
-
-</td>
-
-
-</tr>
-
-
-
-
-</table>
-
-## +trh
--->

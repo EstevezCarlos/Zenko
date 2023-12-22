@@ -1,0 +1,21 @@
+-ZenHLvl = 0
+
+mixin hg(val)
+
+    -ZenHLvl += 1
+    
+    if ZenHLvl == 1
+        h1&attributes(attributes)=val
+    else if ZenHLvl == 2
+        h2&attributes(attributes)=val
+    else if ZenHLvl == 3
+        h3&attributes(attributes)=val
+    else if ZenHLvl == 4
+        h4&attributes(attributes)=val
+    else if ZenHLvl == 5
+        h5&attributes(attributes)=val
+    else
+        h6&attributes(attributes)=val
+    block
+
+    -ZenHLvl -=1
